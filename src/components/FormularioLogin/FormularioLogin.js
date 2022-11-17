@@ -7,7 +7,30 @@ import {
   StyledLabel
 } from "../FormularioPostagem/styled";
 
-const FormularioLogin = ({ login, user, userOnChange }) => {
+const FormularioLogin = ({setPageFlow}) => {
+    
+  const [user, setUser] = useState({
+    userName: "",
+    image: ""
+  });
+    function userOnChange(event) {
+    const value = event.target.value;
+    setUser({
+      ...user,
+
+      [event.target.name]: value
+    });
+  }
+  const login = () => {
+    const usuario = {
+      userName: user.userName, 
+      image: user.image 
+    }
+    setLogin(usuario)
+    setPageFlow(2);
+    ;
+  };
+  
   return (
     <FormContainer>
       <Form>

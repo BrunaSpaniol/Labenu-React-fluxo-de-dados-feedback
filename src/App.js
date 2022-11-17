@@ -20,79 +20,36 @@ const Container = styled.div`
 
 function App() {
   const [pageFlow, setPageFlow] = useState(1);
-  const [user, setUser] = useState({
-    userName: "",
-    image: ""
+  const [login, setLogin] = useState({
+    name: "",
+    foto: "",
   });
-  const [newUser, setNewUser] = useState(1);
+
   const [newTela, setNewTela] = useState(1);
 
-  const [post, setPost] = useState({
+  const [posted, setPosted] = useState({
     titulo: "",
     image: "",
-    descricao: ""
+    descricao: "",
   });
-
-  const telaDefault = {
-    titulo: "Um titulo",
-    image: "https://picsum.photos/536/354",
-    descricao: "Uma descrição"
-  };
-
-  function userOnChange(event) {
-    const value = event.target.value;
-    setUser({
-      ...user,
-
-      [event.target.name]: value
-    });
-  }
-
-  function postOnChange(event) {
-    const value = event.target.value;
-    setPost({
-      ...post,
-
-      [event.target.name]: value
-    });
-  }
-  const login = () => {
-    setPageFlow(2);
-    setNewUser(2);
-  };
-
-  const mudaTela = () => {
-    setNewTela(2);
-  };
 
   return (
     <>
       <GlobalStyle />
       <Container>
         <aside>
-          <Header user={user} newUser={newUser} />
+          <Header user={login} />
           {pageFlow === 1 ? (
-            <FormularioLogin
-              login={login}
-              user={user}
-              userOnChange={userOnChange}
-              setPageFlow={setPageFlow}
-            />
+            <FormularioLogin setPageFlow={setPageFlow} setLogin={setLogin} />
           ) : (
             <FormularioPostagem
-              post={post}
-              postOnChange={postOnChange}
-              setPost={setPost}
+              setPosted={setPosted}
               setNewTela={setNewTela}
               mudaTela={mudaTela}
             />
           )}
         </aside>
-        {newTela === 1 ? (
-          <TelaDaPostagem post={telaDefault} />
-        ) : (
-          <TelaDaPostagem post={post} />
-        )}
+        <TelaDaPostagem post={posted} />
       </Container>
     </>
   );
