@@ -1,6 +1,33 @@
 import { FormContainer, Form, Input, StyledLabel, SendButton } from "./styled";
 
-export const FormularioCadastro = ({ post, postOnChange, mudaTela }) => {
+export const FormularioCadastro = ({ setPosted }) => {
+  const [post, setPost] = useState({
+    titulo: "",
+    image: "",
+    descricao: ""
+  });
+  
+    function postOnChange(event) {
+    const value = event.target.value;
+    setPost({
+      ...post,
+
+      [event.target.name]: value
+    });
+  
+  const mudaTela = () => {
+    const postagem = {
+    titulo: post.titulo,
+    image: post.image,
+    descricao: post.descricao
+    }
+    setPosted(postagem);
+    setPost({
+    titulo: "",
+    image: "",
+    descricao: ""
+  })
+  };
   return (
     <FormContainer>
       <h2>Insira sua postagem abaixo: </h2>

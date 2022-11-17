@@ -1,16 +1,11 @@
-import { TitleHeader, ImgUser, User, UserLog } from "./styled";
+import { TitleHeader, ImgUser, User } from "./styled";
 
-export const Header = ({ user, newUser }) => {
-  return newUser === 2 ? (
+export const Header = ({ user }) => {
+  return (
     <TitleHeader>
       Insta4
-      <UserLog>
-        <ImgUser src={user.image} alt="" />
-
-        <User>{user.userName}</User>
-      </UserLog>
+      <ImgUser src={user.image} alt="" />
+      <User>{user.userName}</User>
     </TitleHeader>
-  ) : (
-    <TitleHeader>Insta4</TitleHeader>
   );
 };
