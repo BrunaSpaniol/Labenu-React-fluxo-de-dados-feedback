@@ -25,8 +25,6 @@ function App() {
     foto: "",
   });
 
-  const [newTela, setNewTela] = useState(1);
-
   const [posted, setPosted] = useState({
     titulo: "",
     image: "",
@@ -42,11 +40,7 @@ function App() {
           {pageFlow === 1 ? (
             <FormularioLogin setPageFlow={setPageFlow} setLogin={setLogin} />
           ) : (
-            <FormularioPostagem
-              setPosted={setPosted}
-              setNewTela={setNewTela}
-              mudaTela={mudaTela}
-            />
+            <FormularioPostagem setPosted={setPosted} />
           )}
         </aside>
         <TelaDaPostagem post={posted} />
